@@ -36,8 +36,8 @@ function canDrive(name: string, age: number): string {
         ? `${name} is old enough to drive.`
         : `${name} is not old enough to drive yet.`;
 }
-console.log(canDrive("Jane", 22));  
-console.log(canDrive("June", 12));  
+console.log(canDrive("angela", 22));  
+console.log(canDrive("jane", 12));  
 
 
 //challenge 6
@@ -142,8 +142,25 @@ console.log(squareResult);
 const circleResult: number = perimeter("c", 4);
 console.log(circleResult);
 
-
-
+//challenge 11
+//sum of even numbers
+function sumEvenNumbers(num: number): number {
+    let sum: number = 0;
+    
+    for (let i: number = 1; i <= num; i++) {
+        if (i % 2 === 0) {
+            sum += i;
+        }
+    }
+    
+    return sum;
+}
+const result1: number = sumEvenNumbers(3);
+console.log(result1);  
+const result2: number = sumEvenNumbers(12);
+console.log(result2); 
+const result3: number = sumEvenNumbers(8);
+console.log(result3);
 
 
 
