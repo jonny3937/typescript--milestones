@@ -162,6 +162,36 @@ console.log(result2);
 const result3: number = sumEvenNumbers(8);
 console.log(result3);
 
+//challenge 12
+// multiply by itself
+function powerUp(num: number, times: number = 0): number {
+    let result: number = 1;
+    if (times === 0) {
+        return result;
+    }
+    if (times < 0) {
+        num = 1 / num;
+        times = -times;
+    }
+    for (let i: number = 0; i < times; i++) {
+        result *= num;
+    }
+    
+    return result;
+}
+const testing1: number = powerUp(2, 3);
+console.log(testing1); 
+const testing2: number = powerUp(5, 0);
+console.log(testing2);
+const testing3: number = powerUp(3, 4);
+console.log(testing3); 
+const testing4: number = powerUp(0);
+console.log(testing4);
+
+//challenge 13
+//factorial calculator
+
+
 
 
 //   tsc milestone_1_challenge.ts && milestone_1_challenge.js
