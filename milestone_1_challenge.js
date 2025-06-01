@@ -32,8 +32,8 @@ function canDrive(name, age) {
         ? "".concat(name, " is old enough to drive.")
         : "".concat(name, " is not old enough to drive yet.");
 }
-console.log(canDrive("Jane", 22));
-console.log(canDrive("June", 12));
+console.log(canDrive("angela", 22));
+console.log(canDrive("jane", 12));
 //challenge 6
 //find largest number
 function largestNumber(a, b, c) {
@@ -140,6 +140,99 @@ var squareResult = perimeter("s", 7);
 console.log(squareResult);
 var circleResult = perimeter("c", 4);
 console.log(circleResult);
-
-
+//challenge 11
+//sum of even numbers
+function sumEvenNumbers(num) {
+    var sum = 0;
+    for (var i = 1; i <= num; i++) {
+        if (i % 2 === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+var result1 = sumEvenNumbers(3);
+console.log(result1);
+var result2 = sumEvenNumbers(12);
+console.log(result2);
+var result3 = sumEvenNumbers(8);
+console.log(result3);
+//challenge 12
+// multiply by itself
+function powerUp(num, times) {
+    if (times === void 0) { times = 0; }
+    var result = 1;
+    if (times === 0) {
+        return result;
+    }
+    if (times < 0) {
+        num = 1 / num;
+        times = -times;
+    }
+    for (var i = 0; i < times; i++) {
+        result *= num;
+    }
+    return result;
+}
+var testing1 = powerUp(2, 3);
+console.log(testing1);
+var testing2 = powerUp(5, 0);
+console.log(testing2);
+var testing3 = powerUp(3, 4);
+console.log(testing3);
+var testing4 = powerUp(0);
+console.log(testing4);
+//challenge 13
+//factorial calculator
+function factorial(n) {
+    var result = 1;
+    if (n === 0) {
+        return result;
+    }
+    for (var i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+var test0 = factorial(0);
+console.log(test0);
+var testi = factorial(4);
+console.log(testi);
+var test6 = factorial(6);
+console.log(test6);
+//challenge 14
+//sum of multiples
+function sumMultiples(n, divisor) {
+    var sum = 0;
+    for (var i = 1; i <= n; i++) {
+        if (i % divisor === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+var sum1 = sumMultiples(10, 2);
+console.log(sum1);
+var sum2 = sumMultiples(15, 3);
+console.log(sum2);
+var sum3 = sumMultiples(7, 5);
+console.log(sum3);
+//challenge 15
+function sumDigits(num) {
+    var sum = 0;
+    var remainingNumber = Math.abs(num);
+    while (remainingNumber > 0) {
+        var lastDigit = remainingNumber % 10;
+        sum += lastDigit;
+        remainingNumber = Math.floor(remainingNumber / 10);
+    }
+    return sum;
+}
+var tes1 = sumDigits(123);
+console.log(tes1);
+var tes2 = sumDigits(4567);
+console.log(tes2);
+var tes3 = sumDigits(0);
+console.log(tes3);
+//the end of challenges
 //   tsc milestone_1_challenge.ts && milestone_1_challenge.js

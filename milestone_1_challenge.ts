@@ -190,7 +190,61 @@ console.log(testing4);
 
 //challenge 13
 //factorial calculator
+function factorial(n: number): number {
+    let result: number = 1;
+    if (n === 0) {
+        return result;
+    }
+    for (let i: number = 1; i <= n; i++) {
+        result *= i;
+    }
+    
+    return result;
+}
+const test0: number = factorial(0);
+console.log(test0);
+const testi: number = factorial(4);
+console.log(testi); 
+const test6: number = factorial(6);
+console.log(test6);
 
+//challenge 14
+//sum of multiples
+function sumMultiples(n: number, divisor: number): number {
+    let sum: number = 0;
+    for (let i: number = 1; i <= n; i++) {
+        if (i % divisor === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+const sum1: number = sumMultiples(10, 2);
+console.log(sum1); 
+const sum2: number = sumMultiples(15, 3);
+console.log(sum2);
+const sum3: number = sumMultiples(7, 5);
+console.log(sum3);
+
+//challenge 15
+
+function sumDigits(num: number): number {
+    let sum: number = 0;
+    let remainingNumber: number = Math.abs(num); 
+    while (remainingNumber > 0) {
+        const lastDigit: number = remainingNumber % 10;
+        sum += lastDigit;
+        remainingNumber = Math.floor(remainingNumber / 10);
+    }
+    return sum;
+}
+const tes1: number = sumDigits(123);
+console.log(tes1);
+const tes2: number = sumDigits(4567);
+console.log(tes2); 
+const tes3: number = sumDigits(0);
+console.log(tes3); 
+//the end of challenges
 
 
 
