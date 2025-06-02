@@ -165,7 +165,10 @@ console.log(average([]));
 
 //challenge 11
 //linear search
-function linearSearch<lib>(arr: lib[], value: lib): number {
+function linearSearch(
+  arr: number[] | string[] | boolean[],
+  value: number | string | boolean
+): number {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === value) {
       return i;
