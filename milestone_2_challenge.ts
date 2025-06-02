@@ -1,5 +1,4 @@
-/// <reference lib="es2015" /> 
-// the reference  will return the index of the value if found, or -1 if not found.
+
 //chalemge 1
 //sum of ppositive numbers
 function sumOfPositives(numbers: number[]): number {
@@ -103,7 +102,7 @@ function filterByLength(words: string[], minLength: number): string[] {
   return result;
 }
 
-console.log(filterByLength(["cat", "giraffe", "hippo", "dog", "elephant"], 5));
+console.log(filterByLength(["english", "spanish", "earthist", "religion", "unbelieveable"], 5));
 
 //challenge 7
 //sum of even numbers
@@ -180,11 +179,12 @@ console.log(linearSearch(["apple", "banana", "orange"], "banana"));
 
 //challenge 12
 //reverse linear search
-function reverseLinearSearch<lib>(arr: lib[], value: lib): number {
+function reverseLinearSearch(
+  arr: number[] | string[] | boolean[],
+  value: number | string | boolean
+): number {
   for (let i = arr.length - 1; i >= 0; i--) {
-    if (arr[i] === value) {
-      return i;
-    }
+    if (arr[i] === value) return i;
   }
   return -1;
 }
@@ -195,13 +195,14 @@ console.log(reverseLinearSearch([true, false, true], false));
 
 //challenge 13
 //linear search all
-function linearSearchAll<lib>(arr: lib[], value: lib): number[] {//t for all generic s
+function linearSearchAll(
+  array: number[] | string[] | boolean[],
+  value: number | string | boolean
+): number[] {
   const indices: number[] = [];
-  let count = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === value) {
-      indices[count] = i;
-      count++;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === value) {
+      indices.push(i);
     }
   }
   return indices;
@@ -233,19 +234,19 @@ console.log(countOccurrences([]));
 
 //chalenge 15
 //remove duplicates
-function removeDuplicates<lib>(arr: lib[]): lib[] {
-    const uniqueElements: lib[] = [];
-    const seen = new Set<lib>();
-    let uniqueIndex = 0;
-    for (let i = 0; i < arr.length; i++) {
-        const currentItem = arr[i];
-        if (!seen.has(currentItem)) {
-            seen.add(currentItem);
-            uniqueElements[uniqueIndex] = currentItem;
-            uniqueIndex++;
-        }
+function removeDuplicates(
+  arr: number[] | string[] | boolean[]
+): number[] | string[] | boolean[] {
+  const uniqueElements: number[] | string[] | boolean[] = [];
+  const seen = new Set<number | string | boolean>();
+  for (const item of arr) {
+    if (!seen.has(item)) {
+      seen.add(item);
+      uniqueElements.push();
     }
-    return uniqueElements;
+  }
+  
+  return uniqueElements;
 }
 console.log(removeDuplicates([1, 2, 3, 2, 4, 1, 5])); 
 console.log(removeDuplicates(['a', 'b', 'a', 'c', 'b']));
@@ -254,22 +255,29 @@ console.log(removeDuplicates([]));
 
 //challenge 16
 // most frequence
-function mostFrequent<lib extends string | number | boolean>(arr: lib[]): lib {
-    const frequencyMap: Record<string, number> = {};
-    let maxCount = 0;
-    let mostFrequentValue = arr[0];
+function mostFrequent(
+  arr: number[] | string[] | boolean[]
+): number | string | boolean {
+  if (arr.length === 0) {
+    throw new Error("Cannot find most frequent element in empty array");
+  }
 
-    for (let i = 0; i < arr.length; i++) {
-        const key = String(arr[i]); 
-        frequencyMap[key] = (frequencyMap[key] || 0) + 1;
+  const frequencyMap = new Map<string, number>();
+  let maxCount = 0;
+  let mostFrequentValue = arr[0];
 
-        if (frequencyMap[key] > maxCount) {
-            maxCount = frequencyMap[key];
-            mostFrequentValue = arr[i];
-        }
+  for (const item of arr) {
+    const key = String(item);
+    const currentCount = (frequencyMap.get(key) || 0) + 1;
+    frequencyMap.set(key, currentCount);
+
+    if (currentCount > maxCount) {
+      maxCount = currentCount;
+      mostFrequentValue = item;
     }
+  }
 
-    return mostFrequentValue;
+  return mostFrequentValue;
 }
 console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]));
 console.log(mostFrequent(["apple", "banana", "apple", "orange", "banana", "apple"])); 

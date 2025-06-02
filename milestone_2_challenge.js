@@ -1,5 +1,3 @@
-/// <reference lib="es2015" /> 
-// the reference  will return the index of the value if found, or -1 if not found.
 //chalemge 1
 //sum of ppositive numbers
 function sumOfPositives(numbers) {
@@ -83,7 +81,7 @@ function filterByLength(words, minLength) {
     }
     return result;
 }
-console.log(filterByLength(["cat", "giraffe", "hippo", "dog", "elephant"], 5));
+console.log(filterByLength(["english", "spanish", "earthist", "religion", "unbelieveable"], 5));
 //challenge 7
 //sum of even numbers
 function sumEvenNumbers(numbers) {
@@ -154,9 +152,8 @@ console.log(linearSearch(["apple", "banana", "orange"], "banana"));
 //reverse linear search
 function reverseLinearSearch(arr, value) {
     for (var i = arr.length - 1; i >= 0; i--) {
-        if (arr[i] === value) {
+        if (arr[i] === value)
             return i;
-        }
     }
     return -1;
 }
@@ -166,13 +163,11 @@ console.log(reverseLinearSearch(["a", "b", "a", "c"], "a"));
 console.log(reverseLinearSearch([true, false, true], false));
 //challenge 13
 //linear search all
-function linearSearchAll(arr, value) {
+function linearSearchAll(array, value) {
     var indices = [];
-    var count = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] === value) {
-            indices[count] = i;
-            count++;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            indices.push(i);
         }
     }
     return indices;
@@ -204,13 +199,11 @@ console.log(countOccurrences([]));
 function removeDuplicates(arr) {
     var uniqueElements = [];
     var seen = new Set();
-    var uniqueIndex = 0;
-    for (var i = 0; i < arr.length; i++) {
-        var currentItem = arr[i];
-        if (!seen.has(currentItem)) {
-            seen.add(currentItem);
-            uniqueElements[uniqueIndex] = currentItem;
-            uniqueIndex++;
+    for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+        var item = arr_1[_i];
+        if (!seen.has(item)) {
+            seen.add(item);
+            uniqueElements.push();
         }
     }
     return uniqueElements;
@@ -222,15 +215,20 @@ console.log(removeDuplicates([]));
 //challenge 16
 // most frequence
 function mostFrequent(arr) {
-    var frequencyMap = {};
+    if (arr.length === 0) {
+        throw new Error("Cannot find most frequent element in empty array");
+    }
+    var frequencyMap = new Map();
     var maxCount = 0;
     var mostFrequentValue = arr[0];
-    for (var i = 0; i < arr.length; i++) {
-        var key = String(arr[i]);
-        frequencyMap[key] = (frequencyMap[key] || 0) + 1;
-        if (frequencyMap[key] > maxCount) {
-            maxCount = frequencyMap[key];
-            mostFrequentValue = arr[i];
+    for (var _i = 0, arr_2 = arr; _i < arr_2.length; _i++) {
+        var item = arr_2[_i];
+        var key = String(item);
+        var currentCount = (frequencyMap.get(key) || 0) + 1;
+        frequencyMap.set(key, currentCount);
+        if (currentCount > maxCount) {
+            maxCount = currentCount;
+            mostFrequentValue = item;
         }
     }
     return mostFrequentValue;
