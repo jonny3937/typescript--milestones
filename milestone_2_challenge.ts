@@ -218,8 +218,10 @@ console.log(linearSearchAll([true, false, true], true));
 
 //challenge 14
 // count occorrence
-function countOccurrences(arr: string[]): Record<string, number> {
-    const countObject: Record<string, number> = {};
+function countOccurrences(
+  arr: number[] | string[] | boolean[]
+): number[] | string[] | boolean[] {
+    const countObject: number[] | string[] | boolean[] = {};
     for (let i = 0; i < arr.length; i++) {
         const currentString = arr[i];
         if (countObject[currentString] === undefined) {
